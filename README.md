@@ -134,31 +134,31 @@ Power BI Dimensional Modeling & DAX Layer (powerbi/)
 
 ### Page 1: Executive Overview
 *High-level performance monitoring displaying R$ 15.84M in Gross Revenue, 99.4K orders, monthly growth trajectory, order status breakdown, and top revenue categories.*
-![Executive Overview](dashboar_screenshot/01_executive_overview.png)
+![Executive Overview](powerbi_dashboard_screenshots/01_executive_overview.png)
 
 ---
 
 ### Page 2: Sales & Product Analysis
 *Product catalog deep dive detailing top revenue-generating categories (led by Health & Beauty at R$ 1.44M, Watches at R$ 1.21M), item count (113K), and freight revenue share.*
-![Sales & Product Analysis](dashboar_screenshot/02_sales_product_analysis.png)
+![Sales & Product Analysis](powerbi_dashboard_screenshots/02_sales_product_analysis.png)
 
 ---
 
 ### Page 3: Customer Intelligence & Value Segmentation
 *Customer retention analysis highlighting the 96.88% one-time buyer deficit, lifetime spend tiers (Medium Value $100–$500 capturing 52.7% of spend), and payment financing methods (Credit Card at 75.4%).*
-![Customer Intelligence](dashboar_screenshot/03_customer_intelligence.png)
+![Customer Intelligence](powerbi_dashboard_screenshots/03_customer_intelligence.png)
 
 ---
 
 ### Page 4: Delivery Logistics & Customer Satisfaction (CSAT)
 *Logistics performance and review dynamics showing average delivery duration (12.56 days), delay rate (8.11%), and review rating breakdown dominated by 5-star reviews (57.3K).*
-![Delivery & Customer Experience](dashboar_screenshot/04_delivery_customer_experience.png)
+![Delivery & Customer Experience](powerbi_dashboard_screenshots/04_delivery_customer_experience.png)
 
 ---
 
 ### Page 5: Geographic & Regional Analysis
 *Geographic distribution across Brazilian states showing São Paulo (SP) capturing 37.4% of total revenue, and transit lead-time disparities between South/Southeast (8–12 days) and North/Northeast (20–27 days).*
-![Geographic Analysis](dashboar_screenshot/05_geographic_analysis.png)
+![Geographic Analysis](powerbi_dashboard_screenshots/05_geographic_analysis.png)
 
 ---
 
@@ -238,8 +238,14 @@ D:\Ecomercee\
 │   ├── dax_measures.md               # Catalog of all 31 verified DAX measures
 │   ├── dashboard_specification.md    # Layout and visual configuration guide
 │   └── power_query_steps.md          # Power Query (M) transformation steps
-├── dashboar_screenshot\              # 5 Full uncropped Power BI dashboard screenshots
-├── screenshots\                      # Architecture diagrams and benchmark visuals
+├── powerbi_dashboard_screenshots\
+│   ├── 01_executive_overview.png     # Executive Overview dashboard screenshot
+│   ├── 02_sales_product_analysis.png # Sales & Product Analysis dashboard screenshot
+│   ├── 03_customer_intelligence.png  # Customer Intelligence dashboard screenshot
+│   ├── 04_delivery_customer_experience.png # Delivery & CSAT dashboard screenshot
+│   └── 05_geographic_analysis.png    # Geographic Analysis dashboard screenshot
+├── screenshots\
+│   └── powerbi_data_model.png        # Star Schema data model architecture diagram
 ├── docs\
 │   ├── DATA_DICTIONARY.md            # Detailed schema data dictionary
 │   ├── BUSINESS_INSIGHTS.md          # 10 In-depth business analytical findings
