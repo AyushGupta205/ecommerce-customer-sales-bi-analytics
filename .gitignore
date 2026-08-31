@@ -1,0 +1,35 @@
+# Python Virtual Environments
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter Checkpoints
+.ipynb_checkpoints/
+
+# Environment Variables & Secrets
+.env
+*.env.local
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor Configs
+.vscode/
+.idea/
+*.swp
+
+# SQLite Database (Auto-generated via python/export_sqlite_db.py; exceeds GitHub 100MB limit)
+*.db
+*.sqlite
+*.sqlite3
+
+# Power BI Local Cache & Temporary Files
+**/cache.abf
+**/.pbi/
+**/.platform/

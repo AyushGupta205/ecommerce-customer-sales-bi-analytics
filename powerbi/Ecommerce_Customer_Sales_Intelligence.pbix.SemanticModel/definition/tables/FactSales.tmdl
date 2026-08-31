@@ -1,0 +1,134 @@
+table FactSales
+	lineageTag: 1c422562-edc1-45c8-9dcf-9fa9b5c5f8ea
+
+	measure 'Total Revenue' = SUM(FactSales[revenue])
+		formatString: R$ #,##0.00
+		lineageTag: d7122259-abb7-450c-a47d-3834e90cd876
+
+	measure 'Total Product Sales' = SUM(FactSales[price])
+		formatString: R$ #,##0.00
+		lineageTag: 2732b326-3ccc-41a6-bf71-8dd20a717b98
+
+	measure 'Total Freight' = SUM(FactSales[freight_value])
+		formatString: R$ #,##0.00
+		lineageTag: 6573bbed-b415-4805-b51f-e946bf031882
+
+	measure 'Total Items' = COUNTROWS(FactSales)
+		formatString: #,##0
+		lineageTag: c4ade395-1b83-48af-8e87-bf4e39f5a848
+
+	measure 'Average Order Value' = DIVIDE([Total Revenue], [Total Orders], 0)
+		formatString: R$ #,##0.00
+		lineageTag: 527d5599-bfcd-4a87-8e2e-cd69d06f2e84
+
+	measure 'Average Item Price' = DIVIDE([Total Product Sales], [Total Items], 0)
+		formatString: R$ #,##0.00
+		lineageTag: 680fce0f-84b4-4010-8686-2f19ca070bba
+
+	measure 'Revenue per Customer' = DIVIDE([Total Revenue], [Total Customers], 0)
+		formatString: R$ #,##0.00
+		lineageTag: 50bf241f-e603-4c6d-a4b0-3c175834e1d9
+
+	measure 'Customer Revenue' = [Total Revenue]
+		formatString: R$ #,##0.00
+		lineageTag: 23f30185-4ef2-4b73-bc8c-ad8ebad92fcb
+
+	measure 'Previous Month Revenue' = CALCULATE([Total Revenue], DATEADD(DimDate[date], -1, MONTH))
+		formatString: R$ #,##0.00
+		lineageTag: 1edd1599-d2a5-4b15-bd55-185ab08f7e61
+
+	measure 'MoM Growth' = VAR CurrentRev = [Total Revenue] VAR PrevRev = [Previous Month Revenue] RETURN IF(NOT ISBLANK(PrevRev) && PrevRev > 0, DIVIDE(CurrentRev - PrevRev, PrevRev, 0), BLANK())
+		formatString: 0.00%
+		lineageTag: ea8a3e1a-7790-43a7-90db-788e2ad186d7
+
+	measure 'Previous Year Revenue' = CALCULATE([Total Revenue], SAMEPERIODLASTYEAR(DimDate[date]))
+		formatString: R$ #,##0.00
+		lineageTag: ef4ec7d1-6578-4e66-84b3-4bc0310158a6
+
+	measure 'YoY Growth' = VAR CurrentRev = [Total Revenue] VAR PrevYearRev = [Previous Year Revenue] RETURN IF(NOT ISBLANK(PrevYearRev) && PrevYearRev > 0, DIVIDE(CurrentRev - PrevYearRev, PrevYearRev, 0), BLANK())
+		formatString: 0.00%
+		lineageTag: e8d1c02e-129f-4848-a490-33488c881a87
+
+	column order_id
+		dataType: string
+		lineageTag: 76118e0b-d98f-4baf-ad7c-c1e541a79dce
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_item_id
+		dataType: int64
+		lineageTag: 662c1578-10b4-47fb-b1b7-68d846c249cc
+		summarizeBy: sum
+		sourceColumn: order_item_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		lineageTag: c8294a03-2f7e-42fb-9e11-5be4705ac5bd
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_id
+		dataType: string
+		lineageTag: c19b526d-390c-4090-922d-f37352f3cd43
+		summarizeBy: none
+		sourceColumn: seller_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column shipping_limit_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:mm
+		lineageTag: f2fd08c3-acc6-4a9f-828f-fd3d0a8a2ff0
+		summarizeBy: none
+		sourceColumn: shipping_limit_date
+
+		variation Variation
+			isDefault
+			relationship: 6f6a6a65-732f-41e2-9f18-cf6d35655bf5
+			defaultHierarchy: LocalDateTable_3168ee6e-6093-4791-8919-dfa42db1e5e0.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column price
+		dataType: double
+		formatString: R$ #,##0.00
+		lineageTag: 1b60f778-33f0-402f-b79f-b58513442789
+		summarizeBy: sum
+		sourceColumn: price
+
+		annotation SummarizationSetBy = Automatic
+
+	column freight_value
+		dataType: double
+		formatString: R$ #,##0.00
+		lineageTag: ec2afbb4-a32c-43ac-a5dc-e7f2bb869fa8
+		summarizeBy: sum
+		sourceColumn: freight_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue
+		dataType: double
+		formatString: R$ #,##0.00
+		lineageTag: a51dcc47-8565-4cf6-b762-1db7b1344bcb
+		summarizeBy: sum
+		sourceColumn: revenue
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactSales = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\Ecomercee\data\processed\\fact_order_items_clean.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"order_id", type text}, {"order_item_id", Int64.Type}, {"product_id", type text}, {"seller_id", type text}, {"shipping_limit_date", type datetime}, {"price", type number}, {"freight_value", type number}, {"revenue", type number}})
+				in
+				    #"Changed Type"
+

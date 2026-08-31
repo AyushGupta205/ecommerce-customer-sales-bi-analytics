@@ -1,0 +1,74 @@
+table DimCustomer
+	lineageTag: d76cab43-ec83-49a4-8173-386a6a317523
+
+	measure 'Total Customers' = DISTINCTCOUNT(DimCustomer[customer_unique_id])
+		formatString: #,##0
+		lineageTag: 36cf102b-64e4-4318-b62d-6dfbb30eb9c7
+
+	measure 'Repeat Customers' = CALCULATE(DISTINCTCOUNT(DimCustomer[customer_unique_id]), DimCustomer[customer_order_count] > 1)
+		formatString: #,##0
+		lineageTag: 19da86ad-5f27-42e1-9e5e-bc9952158c31
+
+	measure 'New Customers' = CALCULATE(DISTINCTCOUNT(DimCustomer[customer_unique_id]), DimCustomer[customer_order_count] = 1)
+		formatString: #,##0
+		lineageTag: 930d1ac3-718c-480f-a725-1b80963b8bb5
+
+	measure 'Repeat Customer Rate' = DIVIDE([Repeat Customers], [Total Customers], 0)
+		formatString: 0.00%
+		lineageTag: dbb8ba3a-14b4-476d-8151-7d7c79c21359
+
+	measure 'Orders per Customer' = DIVIDE([Total Orders], [Total Customers], 0)
+		formatString: 0.00
+		lineageTag: fe272c5d-7472-47d0-b623-d42790d49616
+
+	column customer_id
+		dataType: string
+		lineageTag: c89ccd16-8721-4ba7-a530-05ac1974ebf4
+		sourceColumn: customer_id
+
+	column customer_unique_id
+		dataType: string
+		lineageTag: 3da73b97-6d2d-4ba3-994f-578bb185622b
+		sourceColumn: customer_unique_id
+
+	column customer_zip_code_prefix
+		dataType: int64
+		lineageTag: 82f870b9-c2d9-46b3-8231-846dcd387586
+		sourceColumn: customer_zip_code_prefix
+
+	column customer_city
+		dataType: string
+		lineageTag: 32139229-bd41-489b-aee6-b728f9e770da
+		sourceColumn: customer_city
+
+	column customer_state
+		dataType: string
+		lineageTag: a9448755-e113-408f-981d-9132833ae5e1
+		sourceColumn: customer_state
+
+	column customer_order_count
+		dataType: int64
+		lineageTag: 89e86b14-1547-4842-8889-0f8244b103e1
+		sourceColumn: customer_order_count
+
+	column customer_total_spend
+		dataType: double
+		formatString: R$ #,##0.00
+		lineageTag: 392c39ae-0450-4906-aa65-ce67e2a59286
+		sourceColumn: customer_total_spend
+
+	column customer_value_segment
+		dataType: string
+		lineageTag: 1f3952c6-649c-4e4d-b013-4dcf07b29042
+		sourceColumn: customer_value_segment
+
+	partition DimCustomer = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\Ecomercee\data\processed\\dim_customers_clean.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"customer_id", type text}, {"customer_unique_id", type text}, {"customer_zip_code_prefix", Int64.Type}, {"customer_city", type text}, {"customer_state", type text}, {"customer_order_count", Int64.Type}, {"customer_total_spend", type number}, {"customer_value_segment", type text}})
+				in
+				    #"Changed Type"
+

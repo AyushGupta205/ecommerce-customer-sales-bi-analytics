@@ -1,0 +1,133 @@
+{
+  "config": "{\"version\":\"5.68\",\"themeCollection\":{},\"activeSectionIndex\":0,\"linguisticSchemaSyncVersion\":2,\"objects\":{\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Executive Overview",
+      "displayOption": 0,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "Page1_ExecutiveOverview",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"17a7a48e60f034e84f2e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":501.8518518518518,\"y\":377.77777777777777,\"z\":5,\"width\":280,\"height\":280,\"tabOrder\":5}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"DimDate.year_month\",\"active\":true}],\"Y\":[{\"queryRef\":\"FactSales.Total Revenue\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimDate\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"FactSales\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"year_month\"},\"Name\":\"DimDate.year_month\",\"NativeReferenceName\":\"year_month\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total Revenue\"},\"Name\":\"FactSales.Total Revenue\",\"NativeReferenceName\":\"Total Revenue\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total Revenue\"}}}]},\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 280.00,
+          "width": 280.00,
+          "x": 501.85,
+          "y": 377.78,
+          "z": 5.00
+        },
+        {
+          "config": "{\"name\":\"49ae6a894046652bf584\",\"layouts\":[{\"id\":0,\"position\":{\"x\":639.5909518140235,\"y\":19.97236895570906,\"z\":2,\"width\":280,\"height\":280,\"tabOrder\":2}}],\"singleVisual\":{\"visualType\":\"cardVisual\",\"projections\":{\"Data\":[{\"queryRef\":\"FactSales.Average Order Value\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FactSales\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Average Order Value\"},\"Name\":\"FactSales.Average Order Value\",\"NativeReferenceName\":\"Average Order Value\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Average Order Value\"}}}]},\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 280.00,
+          "width": 280.00,
+          "x": 639.59,
+          "y": 19.97,
+          "z": 2.00
+        },
+        {
+          "config": "{\"name\":\"53e928f6d1480cdf8389\",\"layouts\":[{\"id\":0,\"position\":{\"x\":161.181026380099,\"y\":398.1991060544494,\"z\":3,\"width\":280,\"height\":280,\"tabOrder\":3}}],\"singleVisual\":{\"visualType\":\"cardVisual\",\"projections\":{\"Data\":[{\"queryRef\":\"FactOrders.Delivery Rate\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FactOrders\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Delivery Rate\"},\"Name\":\"FactOrders.Delivery Rate\",\"NativeReferenceName\":\"Delivery Rate\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Delivery Rate\"}}}]},\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 280.00,
+          "width": 280.00,
+          "x": 161.18,
+          "y": 398.20,
+          "z": 3.00
+        },
+        {
+          "config": "{\"name\":\"b33dc359ac03b4e0ae23\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1056.5,\"y\":20,\"width\":223.5,\"height\":280,\"z\":6,\"tabOrder\":6}}],\"singleVisual\":{\"visualType\":\"clusteredBarChart\",\"projections\":{\"Category\":[{\"queryRef\":\"DimProduct.product_category_name_english\",\"active\":true}],\"Y\":[{\"queryRef\":\"FactSales.Total Revenue\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimProduct\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"FactSales\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"product_category_name_english\"},\"Name\":\"DimProduct.product_category_name_english\",\"NativeReferenceName\":\"product_category_name_english\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total Revenue\"},\"Name\":\"FactSales.Total Revenue\",\"NativeReferenceName\":\"Total Revenue\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total Revenue\"}}}]},\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 280.00,
+          "width": 223.50,
+          "x": 1056.50,
+          "y": 20.00,
+          "z": 6.00
+        },
+        {
+          "config": "{\"name\":\"b9df3d38cfb010e16ed7\",\"layouts\":[{\"id\":0,\"position\":{\"x\":833.3333333333333,\"y\":440.7407407407407,\"z\":4,\"width\":280,\"height\":280,\"tabOrder\":4}}],\"singleVisual\":{\"visualType\":\"cardVisual\",\"projections\":{\"Data\":[{\"queryRef\":\"FactReviews.Average Review Score\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FactReviews\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Average Review Score\"},\"Name\":\"FactReviews.Average Review Score\",\"NativeReferenceName\":\"Average Review Score\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Average Review Score\"}}}]},\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 280.00,
+          "width": 280.00,
+          "x": 833.33,
+          "y": 440.74,
+          "z": 4.00
+        },
+        {
+          "config": "{\"name\":\"f0c03a419957218ad821\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10,\"y\":20,\"width\":280,\"height\":280,\"z\":0,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"cardVisual\",\"projections\":{\"Data\":[{\"queryRef\":\"FactSales.Total Revenue\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FactSales\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total Revenue\"},\"Name\":\"FactSales.Total Revenue\",\"NativeReferenceName\":\"Total Revenue\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total Revenue\"}}}]},\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 280.00,
+          "width": 280.00,
+          "x": 10.00,
+          "y": 20.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"f589fe05f4ce501ea88b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":316.2022683125509,\"y\":19.97236895570906,\"z\":1,\"width\":280,\"height\":280,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"cardVisual\",\"projections\":{\"Data\":[{\"queryRef\":\"FactOrders.Total Orders\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FactOrders\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total Orders\"},\"Name\":\"FactOrders.Total Orders\",\"NativeReferenceName\":\"Total Orders\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total Orders\"}}}]},\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 280.00,
+          "width": 280.00,
+          "x": 316.20,
+          "y": 19.97,
+          "z": 1.00
+        },
+        {
+          "config": "{\"name\":\"ffd462ea709ebe1209fa\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1057.4074074074074,\"y\":359.25925925925924,\"z\":7,\"width\":167,\"height\":279,\"tabOrder\":7}}],\"singleVisual\":{\"visualType\":\"donutChart\",\"projections\":{\"Category\":[{\"queryRef\":\"FactOrders.order_status\",\"active\":true}],\"Y\":[{\"queryRef\":\"FactOrders.Total Orders\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FactOrders\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"order_status\"},\"Name\":\"FactOrders.order_status\",\"NativeReferenceName\":\"order_status\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total Orders\"},\"Name\":\"FactOrders.Total Orders\",\"NativeReferenceName\":\"Total Orders\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total Orders\"}}}]},\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 279.00,
+          "width": 167.00,
+          "x": 1057.41,
+          "y": 359.26,
+          "z": 7.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Sales & Product Analysis",
+      "displayOption": 0,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "Page2_SalesProductAnalysis",
+      "ordinal": 1,
+      "visualContainers": [],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Customer Intelligence",
+      "displayOption": 0,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "Page3_CustomerIntelligence",
+      "ordinal": 2,
+      "visualContainers": [],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Delivery & Customer Experience",
+      "displayOption": 0,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "Page4_DeliveryCustomerExperience",
+      "ordinal": 3,
+      "visualContainers": [],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Geographic & Business Insights",
+      "displayOption": 0,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "Page5_GeographicAnalysis",
+      "ordinal": 4,
+      "visualContainers": [],
+      "width": 1280.00
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+table DimProduct
+	lineageTag: 4809b660-0fac-400b-af2e-2f349f3b341d
+
+	column product_id
+		dataType: string
+		lineageTag: b4619c18-99b3-4c82-854e-e8bdf6a5eb60
+		sourceColumn: product_id
+
+	column product_category_name
+		dataType: string
+		lineageTag: ae27fb40-be82-4a6b-8872-e4d876cb0645
+		sourceColumn: product_category_name
+
+	column product_name_lenght
+		dataType: int64
+		lineageTag: c78e8a8e-2794-4c04-b1ca-2a01e31daeed
+		sourceColumn: product_name_lenght
+
+	column product_description_lenght
+		dataType: int64
+		lineageTag: a1918442-80f4-4225-83cf-a67b27799e11
+		sourceColumn: product_description_lenght
+
+	column product_photos_qty
+		dataType: int64
+		lineageTag: 2687f132-3fac-492a-b38b-95f69d818136
+		sourceColumn: product_photos_qty
+
+	column product_weight_g
+		dataType: double
+		lineageTag: 79810352-c808-48c4-a055-3fca2ab7499c
+		sourceColumn: product_weight_g
+
+	column product_length_cm
+		dataType: double
+		lineageTag: 5c0f8025-46d8-4b94-b969-700ab743899a
+		sourceColumn: product_length_cm
+
+	column product_height_cm
+		dataType: double
+		lineageTag: c79e6809-5d36-45e9-b1bd-ed77e877d533
+		sourceColumn: product_height_cm
+
+	column product_width_cm
+		dataType: double
+		lineageTag: a1e29b4b-d6c1-44d9-af6d-4b704558411f
+		sourceColumn: product_width_cm
+
+	column product_category_name_english
+		dataType: string
+		lineageTag: 032ca76e-3d8d-4477-b954-134e6e78b064
+		sourceColumn: product_category_name_english
+
+	partition DimProduct = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\Ecomercee\data\processed\\dim_products_clean.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"product_id", type text}, {"product_category_name", type text}, {"product_name_lenght", Int64.Type}, {"product_description_lenght", Int64.Type}, {"product_photos_qty", Int64.Type}, {"product_weight_g", type number}, {"product_length_cm", type number}, {"product_height_cm", type number}, {"product_width_cm", type number}, {"product_category_name_english", type text}})
+				in
+				    #"Changed Type"
+

@@ -1,0 +1,33 @@
+table DimSeller
+	lineageTag: bb44d2b8-cb33-4a5b-a141-023f9c117c29
+
+	column seller_id
+		dataType: string
+		lineageTag: f6638e3e-662b-45f5-87cc-f1cd72d1017b
+		sourceColumn: seller_id
+
+	column seller_zip_code_prefix
+		dataType: int64
+		lineageTag: 2590d657-3516-421e-aec0-21566b4ac738
+		sourceColumn: seller_zip_code_prefix
+
+	column seller_city
+		dataType: string
+		lineageTag: 1d1b3a0a-e0db-471e-9246-42dd8a5ca6a6
+		sourceColumn: seller_city
+
+	column seller_state
+		dataType: string
+		lineageTag: 39be74b3-22cf-4c46-82f2-fc0100060102
+		sourceColumn: seller_state
+
+	partition DimSeller = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\Ecomercee\data\processed\\dim_sellers_clean.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"seller_id", type text}, {"seller_zip_code_prefix", Int64.Type}, {"seller_city", type text}, {"seller_state", type text}})
+				in
+				    #"Changed Type"
+

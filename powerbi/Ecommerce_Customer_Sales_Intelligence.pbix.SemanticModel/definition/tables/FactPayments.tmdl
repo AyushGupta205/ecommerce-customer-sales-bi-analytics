@@ -1,0 +1,39 @@
+table FactPayments
+	lineageTag: d89c1c67-ce55-470d-aaca-6220eba5a45c
+
+	column order_id
+		dataType: string
+		lineageTag: 52d38e22-9b5a-4f23-92eb-5c814c426deb
+		sourceColumn: order_id
+
+	column payment_sequential
+		dataType: int64
+		lineageTag: 8a289d0e-2ecf-469f-ae68-e3f61af2bb04
+		sourceColumn: payment_sequential
+
+	column payment_type
+		dataType: string
+		lineageTag: a00897da-774a-448e-bd65-6bcf83915586
+		sourceColumn: payment_type
+
+	column payment_installments
+		dataType: int64
+		lineageTag: 625cd48b-0c25-4215-a9d2-a78ac0172a3a
+		sourceColumn: payment_installments
+
+	column payment_value
+		dataType: double
+		formatString: R$ #,##0.00
+		lineageTag: d5ce7e3f-79d3-4d0a-a0dc-19ee6579f988
+		sourceColumn: payment_value
+
+	partition FactPayments = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\Ecomercee\data\processed\\fact_order_payments_clean.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"order_id", type text}, {"payment_sequential", Int64.Type}, {"payment_type", type text}, {"payment_installments", Int64.Type}, {"payment_value", type number}})
+				in
+				    #"Changed Type"
+

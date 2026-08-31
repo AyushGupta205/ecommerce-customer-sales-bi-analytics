@@ -1,0 +1,89 @@
+relationship Rel_Orders_Customers
+	fromColumn: FactOrders.customer_id
+	toColumn: DimCustomer.customer_id
+
+relationship Rel_Sales_Orders
+	fromColumn: FactSales.order_id
+	toColumn: FactOrders.order_id
+
+relationship Rel_Sales_Products
+	fromColumn: FactSales.product_id
+	toColumn: DimProduct.product_id
+
+relationship Rel_Sales_Sellers
+	fromColumn: FactSales.seller_id
+	toColumn: DimSeller.seller_id
+
+relationship Rel_Payments_Orders
+	fromColumn: FactPayments.order_id
+	toColumn: FactOrders.order_id
+
+relationship Rel_Reviews_Orders
+	fromColumn: FactReviews.order_id
+	toColumn: FactOrders.order_id
+
+relationship Rel_Orders_Date
+	fromColumn: FactOrders.order_date
+	toColumn: DimDate.date
+
+relationship 6f6a6a65-732f-41e2-9f18-cf6d35655bf5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactSales.shipping_limit_date
+	toColumn: LocalDateTable_3168ee6e-6093-4791-8919-dfa42db1e5e0.Date
+
+relationship 59485d04-333c-4ff4-8489-385bd1d30440
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactOrders.order_purchase_timestamp
+	toColumn: LocalDateTable_685a867f-8626-41e0-a0c4-20b233ad936f.Date
+
+relationship 0aea5de1-46d9-40f5-9d1d-e3d3ce60cbfc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactOrders.order_approved_at
+	toColumn: LocalDateTable_064b1870-7313-42eb-a82d-20c177fedd51.Date
+
+relationship 5176b06f-fc16-4e4b-b4e3-8bebcffd2c3c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactOrders.order_delivered_carrier_date
+	toColumn: LocalDateTable_0b2583f1-1e73-45ba-a11a-e01608ab35f6.Date
+
+relationship 0088f5fc-9705-4cf8-a490-99a260dcc673
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactOrders.order_delivered_customer_date
+	toColumn: LocalDateTable_96308617-f40d-4a7b-b9ce-aba367be8b0b.Date
+
+relationship 04c37761-fc84-41e2-9f2f-de96ccafb615
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactOrders.order_estimated_delivery_date
+	toColumn: LocalDateTable_e01a74a2-51a6-478b-b85e-f6193082d2f5.Date
+
+relationship ad97b35b-aad1-4959-a280-07e6eb7a106e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactReviews.review_creation_date
+	toColumn: LocalDateTable_fdb7fd6b-bf67-4072-b964-7fcc4443b54a.Date
+
+relationship 2067e3c1-00b2-43b3-bd30-4b2319fed735
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactReviews.review_answer_timestamp
+	toColumn: LocalDateTable_96ce55eb-d21e-498e-be96-2c629a56fef4.Date
+
+relationship dfb47d5e-44db-4ed7-8508-a05a459c6c71
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.date
+	toColumn: LocalDateTable_cffad7d5-8612-49c8-9c44-ab60318da3ff.Date
+
+relationship 4b0642db-03f2-4450-a735-38fd58d81c11
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.date
+	toColumn: LocalDateTable_04cecafb-09eb-4bba-b36a-37de89ef6247.Date
+
+relationship 5e77cb23-684f-4f13-802b-1c4b0a15feb1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.year_month
+	toColumn: LocalDateTable_ea4ba5f6-9155-47ce-80c5-f8f88e40eae4.Date
+
+relationship AutoDetected_23196e2c-d168-4d3a-9a9d-a53e529ea3ff
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: dim_date.date_key
+	toColumn: DimDate.date_key
+

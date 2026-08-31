@@ -1,0 +1,38 @@
+table DimLocation
+	lineageTag: 2f73e9ad-5e16-4acc-9ad9-fa735d7f0097
+
+	column geolocation_zip_code_prefix
+		dataType: int64
+		lineageTag: cc737b5e-f769-4690-aadb-ae8de7056c7c
+		sourceColumn: geolocation_zip_code_prefix
+
+	column geolocation_lat
+		dataType: double
+		lineageTag: 376d495f-7911-4a5c-bb46-343dc92d5699
+		sourceColumn: geolocation_lat
+
+	column geolocation_lng
+		dataType: double
+		lineageTag: 6d1ff8fb-b9f9-4fe3-bb75-bdb39a78bb74
+		sourceColumn: geolocation_lng
+
+	column geolocation_city
+		dataType: string
+		lineageTag: 4768b2ef-3717-467c-b6ff-d0c545e8f926
+		sourceColumn: geolocation_city
+
+	column geolocation_state
+		dataType: string
+		lineageTag: baed3358-38fb-4865-9999-14527925078c
+		sourceColumn: geolocation_state
+
+	partition DimLocation = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\Ecomercee\data\processed\\dim_geolocation_clean.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"geolocation_zip_code_prefix", Int64.Type}, {"geolocation_lat", type number}, {"geolocation_lng", type number}, {"geolocation_city", type text}, {"geolocation_state", type text}})
+				in
+				    #"Changed Type"
+

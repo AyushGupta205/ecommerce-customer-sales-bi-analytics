@@ -1,0 +1,103 @@
+table FactReviews
+	lineageTag: 0fbe73c0-ec0f-4a42-86e7-247042e18089
+
+	measure 'Average Review Score' = AVERAGE(FactReviews[review_score])
+		formatString: 0.00
+		lineageTag: 25171c7d-b824-48e2-a7b2-d418bbbbb7de
+
+	measure 'Five Star Reviews' = CALCULATE(COUNTROWS(FactReviews), FactReviews[review_score] = 5)
+		formatString: #,##0
+		lineageTag: fa2e2e9c-4c87-406f-bb09-a391489bc4b9
+
+	measure 'Five Star Review %' = DIVIDE([Five Star Reviews], COUNTROWS(FactReviews), 0)
+		formatString: 0.00%
+		lineageTag: 01197598-2cac-47e0-9684-78f918c9785d
+
+	measure 'Low Rating Reviews' = CALCULATE(COUNTROWS(FactReviews), FactReviews[review_score] IN {1, 2})
+		formatString: #,##0
+		lineageTag: 5f11bf1d-4e79-4c40-bbe6-69c54220d400
+
+	measure 'Low Rating %' = DIVIDE([Low Rating Reviews], COUNTROWS(FactReviews), 0)
+		formatString: 0.00%
+		lineageTag: cc92ea4a-8bd4-4823-a353-8c6fb5a47b2f
+
+	column review_id
+		dataType: string
+		lineageTag: 59b82928-262b-4522-938e-91845a869d02
+		summarizeBy: none
+		sourceColumn: review_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_id
+		dataType: string
+		lineageTag: e40c68a1-a33b-488e-a557-00794651f187
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_score
+		dataType: int64
+		lineageTag: da706ffe-42f8-4caf-a614-8fcaee331ea8
+		summarizeBy: sum
+		sourceColumn: review_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_comment_title
+		dataType: string
+		lineageTag: 53f593de-a4da-4fdc-99fc-a0bb3840e267
+		summarizeBy: none
+		sourceColumn: review_comment_title
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_comment_message
+		dataType: string
+		lineageTag: 163e8ab0-36a8-4dc9-a769-2ea934c9c320
+		summarizeBy: none
+		sourceColumn: review_comment_message
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_creation_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 754cfca3-83a2-42bc-99ce-ffbb25c0ba24
+		summarizeBy: none
+		sourceColumn: review_creation_date
+
+		variation Variation
+			isDefault
+			relationship: ad97b35b-aad1-4959-a280-07e6eb7a106e
+			defaultHierarchy: LocalDateTable_fdb7fd6b-bf67-4072-b964-7fcc4443b54a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_answer_timestamp
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:mm
+		lineageTag: 502ab157-099f-45e7-b060-5a7c450c2361
+		summarizeBy: none
+		sourceColumn: review_answer_timestamp
+
+		variation Variation
+			isDefault
+			relationship: 2067e3c1-00b2-43b3-bd30-4b2319fed735
+			defaultHierarchy: LocalDateTable_96ce55eb-d21e-498e-be96-2c629a56fef4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactReviews = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\Ecomercee\data\processed\\fact_order_reviews_clean.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"review_id", type text}, {"order_id", type text}, {"review_score", Int64.Type}, {"review_comment_title", type text}, {"review_comment_message", type text}, {"review_creation_date", type datetime}, {"review_answer_timestamp", type datetime}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
