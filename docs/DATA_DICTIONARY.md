@@ -16,7 +16,7 @@
 | `customer_state` | VARCHAR(5) | 2-letter Brazilian state acronym | State of residence | `SP` |
 | `customer_order_count` | INT | Lifetime number of orders placed by person | Frequency metric | `1` |
 | `customer_total_spend` | DECIMAL(12,2) | Lifetime gross revenue spend | Monetary value (BRL) | `146.87` |
-| `customer_value_segment` | VARCHAR(50) | Categorized spend tier | Customer classification | `Medium Value ($100-$500)` |
+| `customer_value_segment` | VARCHAR(50) | Categorized spend tier | Customer classification | `Medium Value (R$ 100–R$ 500)` |
 
 ---
 

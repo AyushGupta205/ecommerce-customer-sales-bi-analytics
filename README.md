@@ -2,9 +2,8 @@
 
 [![Python](https://img.shields.io/badge/Python-3.13-blue.svg)](https://www.python.org/)
 [![SQL Database](https://img.shields.io/badge/Database-SQLite%20%7C%20MySQL%208.0-orange.svg)](https://www.sqlite.org/)
-[![Power BI](https://img.shields.io/badge/Power%20BI-Star%20Schema%20%7C%20DAX%20%7C%20PBIX-yellow.svg)](https://powerbi.microsoft.com/)
+[![Power BI](https://img.shields.io/badge/Power%20BI-Star%20Schema%20%7C%20DAX%20%7C%20PBIP-yellow.svg)](https://powerbi.microsoft.com/)
 [![Validation](https://img.shields.io/badge/Validation-100%25%20Verified%20(10%2F10%20Tests%20Passed)-brightgreen.svg)](docs/VALIDATION_REPORT.md)
-[![Status](https://img.shields.io/badge/Portfolio-Ready-success.svg)](docs/PORTFOLIO_READINESS.md)
 
 An end-to-end Data Analytics & Business Intelligence solution modeling and analyzing **99,441 commercial orders** totaling **R$ 15.84 Million in Gross Revenue** from the authentic Brazilian Olist E-Commerce marketplace.
 
@@ -12,32 +11,32 @@ An end-to-end Data Analytics & Business Intelligence solution modeling and analy
 
 ## 1. Project Overview
 
-This project delivers an end-to-end data analytics and business intelligence solution for an e-commerce platform. It integrates data engineering in **Python**, relational data modeling and automated testing in **SQL (SQLite / MySQL)**, and dimensional modeling with **31 DAX measures** in **Microsoft Power BI** to create an interactive 5-page executive dashboard.
+This project delivers an end-to-end data analytics and business intelligence solution for an e-commerce platform. It integrates automated data engineering in **Python**, relational data modeling and automated testing in **SQL (SQLite / MySQL)**, and dimensional modeling with **30+ DAX measures** in **Microsoft Power BI** to create an interactive 5-page executive dashboard.
 
 ---
 
 ## 2. Business Problem
 
-An e-commerce marketplace processes high volumes of transactional records across orders, customers, product catalogs, multi-method payments, seller logistics, and customer reviews. However, raw transactional data distributed across separate relational tables does not provide executive management with a clear, consolidated view of:
+An e-commerce marketplace processes high volumes of transactional records across orders, customers, product catalogs, multi-method payments, seller logistics, and customer reviews. Without a unified analytical model, leadership faces critical operational visibility gaps:
 
-- Sales velocity, revenue trajectories, and seasonal fluctuations
-- Customer retention deficits and high-value customer spend tiers
+- Unclear sales velocity, revenue trajectories, and seasonal fluctuations
+- Severe customer retention deficits (96.88% one-time buyers)
 - Product catalog performance and category sales concentration
-- Logistics transit duration and shipping delay hotspots
+- Logistics transit bottlenecks and shipping delay hotspots
 - Empirical associations between delivery lead-times and customer review ratings
 - Regional and geographic revenue concentration
 
-This project solves this operational visibility challenge by transforming raw transactional data into an end-to-end analytical system that supports data-driven commercial and operational decisions.
+This project solves this operational visibility challenge by transforming raw transactional data into an analytical system that supports data-driven commercial and operational decisions.
 
 ---
 
 ## 3. Project Objectives
 
-- Construct a clean data engineering pipeline in Python to normalize 9 relational entities.
+- Construct a clean, reproducible ETL pipeline in Python to normalize 9 relational entities.
 - Design a relational schema with primary and foreign key constraints, executing 10 automated SQL quality audits.
 - Develop 24 core SQL business queries and 5 advanced CTE/Window Function analytical models.
-- Implement an analytical Star Schema (5 Dimension Tables + 4 Fact Tables) in Power BI with 1-to-many single-directional relationships.
-- Author 31 DAX measures across revenue velocity, fulfillment rates, customer retention %, review sentiment, and time intelligence.
+- Implement an analytical Star Schema (5 Dimension Tables + 4 Fact Tables) in Power BI with single-directional 1-to-many relationships.
+- Author 30+ DAX measures across revenue velocity, fulfillment rates, customer retention %, review sentiment, and time intelligence.
 - Build an interactive 5-page executive dashboard to deliver actionable, data-backed business insights.
 
 ---
@@ -48,7 +47,7 @@ This project solves this operational visibility challenge by transforming raw tr
 2. **Sales Trends:** What are the monthly revenue trajectories, and when do seasonal sales spikes occur?
 3. **Product Mix:** Which product categories generate the highest revenue, and how concentrated is catalog sales performance?
 4. **Customer Retention:** What proportion of buyers are one-time vs repeat customers, and what is the retention deficit?
-5. **Customer Value:** How is revenue distributed across Low (<$100), Medium ($100–$500), and High-value (>$500) spend tiers?
+5. **Customer Value:** How is revenue distributed across Low (<R$ 100), Medium (R$ 100–R$ 500), and High-value (>R$ 500) spend tiers?
 6. **Payment Financing:** Which payment methods dominate transaction volume and gross payment financing value?
 7. **Logistics Velocity:** What is the average order delivery duration, and what proportion of orders face shipping delays?
 8. **Customer Satisfaction (CSAT):** How does delivery transit duration empirically correlate with customer review ratings?
@@ -102,7 +101,7 @@ This project solves this operational visibility challenge by transforming raw tr
 
 ---
 
-## 8. End-to-End Architecture
+## 8. End-to-End Analytics Pipeline
 
 ```
 Raw CSV Datasets (data/raw/ - 9 Entities)
@@ -130,7 +129,7 @@ Relational SQL Analytical Database (data/ecommerce.db & sql/)
    ▼
 Power BI Dimensional Modeling & DAX Layer (powerbi/)
    ├── Star Schema with single-directional 1-to-many filter propagation
-   ├── 31 Pre-calculated DAX business measures (KPIs, Segments, Time Intelligence)
+   ├── 30+ Pre-calculated DAX business measures (KPIs, Segments, Time Intelligence)
    └── Native Power BI Project (`Ecommerce_Customer_Sales_Intelligence.pbip` / `.pbix`)
    │
    ▼
@@ -156,7 +155,7 @@ Power BI Dimensional Modeling & DAX Layer (powerbi/)
 ---
 
 ### Page 3: Customer Intelligence & Value Segmentation
-*Customer retention analysis highlighting the 96.88% one-time buyer deficit, lifetime spend tiers (Medium Value $100–$500 capturing 52.7% of spend), and payment financing methods (Credit Card at 75.4%).*
+*Customer retention analysis highlighting the 96.88% one-time buyer deficit, lifetime spend tiers (Medium Value R$ 100–R$ 500 capturing 52.7% of spend), and payment financing methods (Credit Card at 75.4%).*
 ![Customer Intelligence](powerbi_dashboard_screenshots/03_customer_intelligence.png)
 
 ---
@@ -196,13 +195,13 @@ Power BI Dimensional Modeling & DAX Layer (powerbi/)
 
 ## 12. Technical Implementation
 
-### A. Python Data Engineering (`python/`)
+### A. Python Data Pipeline (`python/`)
 - **`data_cleaning.py`:** Standardizes ISO 8601 timestamps, deduplicates geographic records, maps Portuguese category names to English, imputes missing dimensions with business defaults, and enforces referential integrity.
 - **`feature_engineering.py`:** Calculates derived financial fields (`revenue = price + freight_value`), operational lead times, customer purchase frequency, value tier flags, and generates the continuous 1,096-day `dim_date.csv`.
-- **`eda.py`:** Generates descriptive statistics, distribution metrics, correlation matrices, and visual benchmark charts.
+- **`eda.py`:** Generates descriptive statistics, distribution metrics, and correlation matrices.
 - **`export_sqlite_db.py`:** Programmatically instantiates `ecommerce.db`, executes DDL schemas, loads clean CSVs, creates indexes, and runs 10 automated SQL quality audits.
 
-### B. Relational SQL Database (`sql/`)
+### B. Relational SQL Analytics (`sql/`)
 - **`01_database_schema.sql`:** DDL definitions for 5 Dimension tables and 4 Fact tables with primary keys, foreign keys, and indexes.
 - **`03_data_quality.sql`:** 10 Automated validation queries verifying 0 duplicate PKs, 0 orphan FKs, 0 invalid dates, and domain constraints.
 - **`04_business_analysis.sql`:** 24 Core analytical queries covering monthly sales velocity, category revenue rankings, customer retention rates, and payment distributions.
@@ -210,7 +209,7 @@ Power BI Dimensional Modeling & DAX Layer (powerbi/)
 
 ### C. Power BI Star Schema & DAX (`powerbi/`)
 - **Star Schema Architecture:** 5 Dimension tables (`DimCustomer`, `DimProduct`, `DimSeller`, `DimDate`, `DimLocation`) connected to 4 Fact tables (`FactSales`, `FactOrders`, `FactPayments`, `FactReviews`) with single-directional 1-to-many relationships.
-- **31 DAX Measures:** Fully documented measure library covering sales velocity, fulfillment rates, customer retention percentages, review sentiment breakdown, and Year-over-Year (YoY) / Month-over-Month (MoM) time intelligence.
+- **DAX Measure Catalog:** Documented measure library in [`dax_measures.md`](powerbi/dax_measures.md) covering sales velocity, fulfillment rates, customer retention percentages, review sentiment breakdown, and Year-over-Year (YoY) / Month-over-Month (MoM) time intelligence.
 
 ---
 
@@ -249,7 +248,7 @@ The data model follows an analytical Star Schema with 5 Dimension tables and 4 F
 │   ├── Ecommerce_Customer_Sales_Intelligence.pbix # Master Power BI report file
 │   ├── Ecommerce_Customer_Sales_Intelligence.pbip # Native Power BI Project
 │   ├── data_model.md                 # Star Schema relationship documentation
-│   ├── dax_measures.md               # Catalog of all 31 verified DAX measures
+│   ├── dax_measures.md               # Catalog of all 30+ verified DAX measures
 │   ├── dashboard_specification.md    # Layout and visual configuration guide
 │   └── power_query_steps.md          # Power Query (M) transformation steps
 ├── powerbi_dashboard_screenshots/    # Official 5 full Power BI dashboard screenshots
@@ -264,10 +263,7 @@ The data model follows an analytical Star Schema with 5 Dimension tables and 4 F
 │   ├── DATA_DICTIONARY.md            # Detailed schema data dictionary
 │   ├── BUSINESS_INSIGHTS.md          # 10 In-depth business analytical findings
 │   ├── BUSINESS_RECOMMENDATIONS.md   # Actionable commercial and logistics strategies
-│   ├── INTERVIEW_PREPARATION.md      # Comprehensive interview Q&A guide
-│   ├── PORTFOLIO_READINESS.md        # Final portfolio readiness audit
-│   ├── VALIDATION_REPORT.md          # Cross-platform KPI reconciliation matrix
-│   └── FINAL_AUDIT.md                # Multi-pillar production audit report
+│   └── VALIDATION_REPORT.md          # Cross-platform KPI reconciliation matrix
 ├── requirements.txt                  # Python dependencies
 ├── .gitignore                        # Git exclusions (cache, secrets, >100MB files)
 ├── .env.example                      # Example environment variables template
@@ -288,13 +284,13 @@ All key metrics were cross-validated across the **Python Data Pipeline**, the **
 | **SQL Data Quality** | 10 Automated Integrity Checks | 10/10 Tests Passed (0 Defects) | **PASS** |
 | **SQL Analytical Queries**| 24 Core + 5 Advanced Queries | 29/29 Executed Cleanly | **PASS** |
 | **Power BI Star Schema** | 5 Dimensions, 4 Facts | 1-to-Many Filter Propagation | **PASS** |
-| **DAX Measures** | 31 Business Calculations | 0 Syntax / Context Errors | **PASS** |
+| **DAX Measures** | 30+ Business Calculations | 0 Syntax / Context Errors | **PASS** |
 | **Dashboard Pages** | 5 Interactive Pages | 100% Exact Matching KPIs | **PASS** |
 | **Security & Git Audit** | No Secrets, No Large Binaries | Clean Working Tree | **PASS** |
 
 ---
 
-## 16. How to Run Locally
+## 16. How to Reproduce
 
 1. **Clone the Repository:**
    ```bash
@@ -328,7 +324,7 @@ All key metrics were cross-validated across the **Python Data Pipeline**, the **
 
 ## 17. Project Limitations
 
-- **Manufacturing & Wholesale Costs:** The authentic Olist dataset does not contain supplier acquisition or manufacturing cost data; therefore, analysis is strictly scoped to Gross Revenue, Product Sales, Freight, and AOV without fabricating profit margins.
+- **Manufacturing & Wholesale Costs:** The authentic Olist dataset contains customer prices and shipping freight, but does not include supplier acquisition or manufacturing cost data; therefore, analysis is strictly scoped to Gross Revenue, Product Sales, Freight, and AOV without fabricating profit margins.
 - **Correlation vs. Causation:** The negative correlation ($r = -0.3338$) between delivery duration and review ratings represents an observed empirical association and does not imply that shipping delay was the sole causal factor behind every negative review.
 
 ---
