@@ -35,11 +35,11 @@ The pipeline spans raw data ingestion, automated Python cleaning, feature engine
 2. **Feature Engineering (`python/feature_engineering.py`)**:
    - Derives total revenue (`price + freight_value`), operational lead times (`delivery_days`, `approval_days`), delivery buffers (`estimated_delivery_gap`), customer value segmentation (Low <$100, Medium $100-$500, High >$500), customer repeat flags, and a dedicated 1,096-day `DimDate` calendar table.
 3. **Database Engine (`data/ecommerce.db` & `sql/`)**:
-   - Normalizes data into 5 Dimensions and 3 Fact tables with primary keys, foreign keys, and B-Tree indexes.
+   - Normalizes data into 5 Dimensions and 4 Fact tables with primary keys, foreign keys, and B-Tree indexes.
    - Passes 10 automated SQL data quality tests with zero defects.
 4. **Power BI Modeling & DAX (`powerbi/`)**:
    - Star Schema with single-directional 1-to-Many relationships.
-   - 28 formatted DAX measures including Time Intelligence (`MoM Growth`, `YoY Growth`), Customer LTV, and a What-If Delivery Improvement Scenario.
+   - 31 formatted DAX measures including Time Intelligence (`MoM Growth`, `YoY Growth`), Customer LTV, and a What-If Delivery Improvement Scenario.
 5. **Interactive 5-Page Dashboard (`screenshots/` & `powerbi/`)**:
    - Page 1: Executive Overview
    - Page 2: Sales & Product Analysis

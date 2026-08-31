@@ -61,7 +61,7 @@ This environment audit evaluates the software ecosystem, database instances, exe
 ## 5. Power BI Status & Execution Capability
 
 - **Desktop Application**: Installed at `C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`.
-- **Data Model Architecture**: Star Schema with 3 Fact tables and 5 Dimension tables.
+- **Data Model Architecture**: Star Schema with 4 Fact tables and 5 Dimension tables.
 - **DAX & Power Query Specification**: Fully documented in markdown and ready to import into Power BI Desktop.
 - **Visual Previews**: Automated high-resolution dashboard previews generated under `screenshots/` for recruiter presentation.
 

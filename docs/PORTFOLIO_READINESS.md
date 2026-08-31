@@ -15,10 +15,10 @@
 | **2. Python Pipeline** | **PASS** | `python/data_cleaning.py` and `feature_engineering.py` execute with 0 errors; 8 clean CSVs and `dim_date.csv` generated. |
 | **3. SQL Database** | **PASS** | `data/ecommerce.db` structured with 9 tables, PKs, FKs, and indexes. 10/10 automated quality tests passed with 0 defects. |
 | **4. SQL Analytics** | **PASS** | 24 business analysis queries and 5 advanced CTE/Window queries executed cleanly without row multiplication. |
-| **5. Power BI Model** | **PASS** | Enterprise Star Schema (5 Dimensions, 3 Facts) with 1-to-many relationships documented in `powerbi/data_model.md`. |
+| **5. Power BI Model** | **PASS** | Analytical Star Schema (5 Dimensions, 4 Facts) with 1-to-many relationships documented in `powerbi/data_model.md`. |
 | **6. DAX Measures** | **PASS** | 31 verified measures covering sales, fulfillment, customer retention, and time intelligence documented in `powerbi/dax_measures.md`. |
 | **7. Dashboard Pages** | **PASS** | 5 interactive pages (`Executive Overview`, `Sales & Product`, `Customer Intelligence`, `Delivery & Experience`, `Geographic`). |
-| **8. Visual Proof** | **PASS** | 5 full uncropped 1080p dashboard screenshots verified in `dashboar_screenshot/` and embedded in `README.md`. |
+| **8. Visual Proof** | **PASS** | 5 full uncropped 1080p dashboard screenshots verified in `powerbi_dashboard_screenshots/` and embedded in `README.md`. |
 | **9. Documentation** | **PASS** | Comprehensive suite created: `README.md`, `DATA_DICTIONARY.md`, `BUSINESS_INSIGHTS.md`, `BUSINESS_RECOMMENDATIONS.md`. |
 | **10. GitHub & Security**| **PASS** | `.gitignore` excludes cache, secrets, and >100MB binaries. Git tree is clean with valid commits and no leaked credentials. |
 | **11. Resume Section** | **PASS** | 3 ATS-optimized, high-impact bullet points prepared with measurable metrics and action verbs. |

@@ -15,7 +15,7 @@ import os
 import json
 import pandas as pd
 
-BASE_DIR = r"D:\Ecomercee"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 POWERBI_DIR = os.path.join(BASE_DIR, "powerbi")
 PBIP_FILE = os.path.join(POWERBI_DIR, "Ecommerce_Customer_Sales_Intelligence.pbip")
 DATASET_DIR = os.path.join(POWERBI_DIR, "Ecommerce_Customer_Sales_Intelligence.Dataset")

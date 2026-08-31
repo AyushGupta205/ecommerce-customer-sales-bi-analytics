@@ -38,6 +38,7 @@ The Power BI data model is organized into a clean **Star Schema** with separated
 | Table Name | Source File / Table | Primary / Composite Key | Grain | Key Metrics |
 | :--- | :--- | :--- | :--- | :--- |
 | **`FactSales`** | `fact_order_items_clean.csv` | `(order_id, order_item_id)` | 1 row per ordered product line item | `price`, `freight_value`, `revenue` |
+| **`FactOrders`** | `fact_orders_clean.csv` | `order_id` | 1 row per placed commercial order | `delivery_days`, `approval_days`, `delay_days` |
 | **`FactPayments`** | `fact_order_payments_clean.csv`| `(order_id, payment_sequential)`| 1 row per payment transaction | `payment_value`, `payment_installments` |
 | **`FactReviews`** | `fact_order_reviews_clean.csv` | `(review_id, order_id)` | 1 row per customer review evaluation | `review_score` (1-5) |
 

@@ -19,7 +19,7 @@
 | **6. SQL Database Engine**| **PASS** | `data/ecommerce.db` instantiated via `python/export_sqlite_db.py` with 9 tables, PKs, FKs, and indexes. |
 | **7. SQL Quality Audits** | **PASS** | All 10 data quality tests in `sql/03_data_quality.sql` executed against database with 0 defects (`docs/VALIDATION_REPORT.md`). |
 | **8. SQL Analytics Queries**| **PASS** | 24 core business queries in `sql/04_business_analysis.sql` and advanced CTEs/window queries in `sql/05_advanced_analysis.sql`. |
-| **9. Power BI Model & DAX Specs**| **PASS** | Star schema documented in `powerbi/data_model.md`, Power Query M-code in `powerbi/power_query_steps.md`, 28 DAX measures in `powerbi/dax_measures.md`. |
+| **9. Power BI Model & DAX Specs**| **PASS** | Star schema documented in `powerbi/data_model.md`, Power Query M-code in `powerbi/power_query_steps.md`, 31 DAX measures in `powerbi/dax_measures.md`. |
 | **10. Power BI Desktop GUI Report**| **PASS** | Fully built and validated 5-page report in `powerbi/Ecommerce_Customer_Sales_Intelligence.pbix` and `.pbip`. All KPIs cross-verified (`docs/POWERBI_VALIDATION.md`). |
 | **11. Documentation & GitHub**| **PASS** | `README.md`, `requirements.txt`, `.gitignore`, `.env.example`, `docs/DATA_DICTIONARY.md`, `docs/BUSINESS_INSIGHTS.md`, `docs/BUSINESS_RECOMMENDATIONS.md`. |
 

@@ -18,7 +18,7 @@
 > 
 > *Using Python with Pandas and NumPy, I automated data cleaning, handled ISO timestamp parsing, Portuguese category mapping, and engineered operational lead times and customer spend segments. Next, I structured a normalized relational database in SQLite and MySQL, executing 10 automated data quality checks and 24 complex SQL queries utilizing CTEs and Window Functions.*
 > 
-> *Finally, I designed a Power BI Star Schema connecting 5 Dimensions and 3 Fact tables, authored 31 DAX measures, and developed an interactive 5-page executive dashboard. Key findings include São Paulo driving 37.4% of revenue, an extreme one-time customer rate of 96.88%, and empirical evidence that deliveries over 30 days cause review scores to drop from 4.45 to 1.76."*
+> *Finally, I designed a Power BI Star Schema connecting 5 Dimensions and 4 Fact tables, authored 31 DAX measures, and developed an interactive 5-page executive dashboard. Key findings include São Paulo driving 37.4% of revenue, an extreme one-time customer rate of 96.88%, and empirical evidence that deliveries over 30 days cause review scores to drop from 4.45 to 1.76."*
 
 ---
 
@@ -29,7 +29,7 @@
 > 
 > *On the Database layer, I designed a 3NF relational schema in SQLite and MySQL. I authored 10 automated data quality tests verifying zero duplicate primary keys and zero orphan foreign keys, followed by 24 business analysis queries and advanced CTEs using Window Functions like `DENSE_RANK` and `NTILE` for RFM customer value deciles.*
 > 
-> *On the Business Intelligence layer, I designed an enterprise Star Schema in Power BI with single-directional 1-to-many relationships to prevent Cartesian fan-out multiplication. I wrote 31 DAX measures covering sales velocity, fulfillment rates, customer retention %, review sentiment, and YoY/MoM time intelligence.*
+> *On the Business Intelligence layer, I designed an analytical Star Schema in Power BI (5 Dimensions, 4 Facts) with single-directional 1-to-many relationships to prevent Cartesian fan-out multiplication. I wrote 31 DAX measures covering sales velocity, fulfillment rates, customer retention %, review sentiment, and YoY/MoM time intelligence.*
 > 
 > *The resulting 5-page dashboard uncovered three major insights: first, a retention deficit where 96.88% of buyers never made a second purchase; second, an empirical correlation of r = -0.3338 between shipping delays and 1-star reviews; and third, a 73.5% revenue concentration in the Southeast region. I translated these findings into strategic recommendations including automated post-purchase CRM workflows and regional 3PL fulfillment hubs."*
 

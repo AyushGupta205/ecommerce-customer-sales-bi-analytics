@@ -10,54 +10,65 @@ An end-to-end Data Analytics & Business Intelligence solution modeling and analy
 
 ---
 
-## 1. Business Problem
+## 1. Project Overview
 
-An enterprise e-commerce platform processes a large volume of transactional data across orders, customers, product catalogs, multi-method payments, seller logistics, and customer reviews. However, raw transactional data distributed across disparate relational tables does not provide executive management with a clear, unified view of:
+This project delivers an end-to-end data analytics and business intelligence solution for an e-commerce platform. It integrates data engineering in **Python**, relational data modeling and automated testing in **SQL (SQLite / MySQL)**, and dimensional modeling with **31 DAX measures** in **Microsoft Power BI** to create an interactive 5-page executive dashboard.
 
-- Sales performance and revenue growth trends
+---
+
+## 2. Business Problem
+
+An e-commerce marketplace processes high volumes of transactional records across orders, customers, product catalogs, multi-method payments, seller logistics, and customer reviews. However, raw transactional data distributed across separate relational tables does not provide executive management with a clear, consolidated view of:
+
+- Sales velocity, revenue trajectories, and seasonal fluctuations
 - Customer retention deficits and high-value customer spend tiers
-- Product catalog performance and category revenue contribution
-- Logistics fulfillment velocity and shipping delay hotspots
-- Empirical relationships between delivery lead-times and customer review scores
-- Regional and geographic market concentration
+- Product catalog performance and category sales concentration
+- Logistics transit duration and shipping delay hotspots
+- Empirical associations between delivery lead-times and customer review ratings
+- Regional and geographic revenue concentration
 
-This project solves this operational visibility gap by transforming raw e-commerce data into a complete, end-to-end analytics system using **Python**, **SQL**, and **Power BI**.
-
----
-
-## 2. Project Objective
-
-To build an end-to-end business intelligence pipeline that cleans raw relational data, enforces primary/foreign key data integrity, models a 3NF relational database, constructs a 1-to-many Star Schema, writes 31 DAX measures, and designs a 5-page interactive executive dashboard providing data-backed recommendations for executive leadership.
+This project solves this operational visibility challenge by transforming raw transactional data into an end-to-end analytical system that supports data-driven commercial and operational decisions.
 
 ---
 
-## 3. Key Business Questions Answered
+## 3. Project Objectives
 
-1. **Revenue Performance:** How much total revenue was generated, and what is the platform's Average Order Value (AOV)?
-2. **Sales Trends:** What are the monthly revenue growth trajectories, and when do seasonal sales spikes occur?
+- Construct a clean data engineering pipeline in Python to normalize 9 relational entities.
+- Design a relational schema with primary and foreign key constraints, executing 10 automated SQL quality audits.
+- Develop 24 core SQL business queries and 5 advanced CTE/Window Function analytical models.
+- Implement an analytical Star Schema (5 Dimension Tables + 4 Fact Tables) in Power BI with 1-to-many single-directional relationships.
+- Author 31 DAX measures across revenue velocity, fulfillment rates, customer retention %, review sentiment, and time intelligence.
+- Build an interactive 5-page executive dashboard to deliver actionable, data-backed business insights.
+
+---
+
+## 4. Key Business Questions Answered
+
+1. **Revenue Performance:** How much gross revenue was generated, and what is the platform's Average Order Value (AOV)?
+2. **Sales Trends:** What are the monthly revenue trajectories, and when do seasonal sales spikes occur?
 3. **Product Mix:** Which product categories generate the highest revenue, and how concentrated is catalog sales performance?
-4. **Customer Retention:** What percentage of buyers are one-time vs repeat customers, and what is the customer retention deficit?
-5. **Customer Value:** How is revenue distributed across Low, Medium, and High-value customer spend tiers?
-6. **Payment Financing:** Which payment methods dominate transaction volume and gross financing value?
-7. **Logistics Velocity:** What is the average order delivery lead-time, and what proportion of orders face shipping delays?
-8. **Customer Satisfaction (CSAT):** How does delivery transit duration empirically correlate with customer review scores?
-9. **Geographic Concentration:** Which states and macro-regions generate the majority of sales, and where are logistics transit bottlenecks located?
-10. **Strategic Action:** What data-driven operational and commercial recommendations can management implement to drive growth and reduce churn?
+4. **Customer Retention:** What proportion of buyers are one-time vs repeat customers, and what is the retention deficit?
+5. **Customer Value:** How is revenue distributed across Low (<$100), Medium ($100–$500), and High-value (>$500) spend tiers?
+6. **Payment Financing:** Which payment methods dominate transaction volume and gross payment financing value?
+7. **Logistics Velocity:** What is the average order delivery duration, and what proportion of orders face shipping delays?
+8. **Customer Satisfaction (CSAT):** How does delivery transit duration empirically correlate with customer review ratings?
+9. **Geographic Concentration:** Which states generate the majority of sales, and where are logistics transit bottlenecks concentrated?
+10. **Strategic Action:** What operational and commercial strategies can management implement to drive repeat purchases and improve delivery performance?
 
 ---
 
-## 4. Dataset Overview
+## 5. Dataset Overview
 
 * **Source:** Authentic Brazilian Olist E-Commerce Public Dataset.
 * **Volume:** 99,441 unique orders across 96,096 distinct customers and 3,095 sellers.
-* **Scope:** Real-world commercial transactions recorded between September 2016 and September 2018 across all 27 Brazilian states.
+* **Time Span:** Commercial transactions recorded between September 2016 and September 2018 across all 27 Brazilian states.
 * **Entities:** 9 Relational tables covering Orders, Customers, Order Items, Payments, Reviews, Products, Sellers, Geolocation, and Category Translations.
 
 ---
 
-## 5. Key Verified KPIs
+## 6. Key Verified KPIs
 
-| KPI Metric | Ground-Truth Value | Description |
+| KPI Metric | Verified Value | Definition / Calculation |
 | :--- | :--- | :--- |
 | **Gross Revenue** | **R$ 15,843,553.24** | Total revenue generated (`Product Price + Freight Value`) |
 | **Product Sales** | **R$ 13,591,643.70** | Direct catalog merchandise item sales value |
@@ -65,19 +76,19 @@ To build an end-to-end business intelligence pipeline that cleans raw relational
 | **Total Orders** | **99,441** | Distinct customer orders placed |
 | **Delivered Orders** | **96,478** | Successfully fulfilled customer deliveries |
 | **Delivery Fulfillment Rate** | **97.02%** | Proportion of placed orders successfully delivered |
-| **Total Unique Customers** | **96,096** | Distinct individual purchasers |
+| **Total Unique Customers** | **96,096** | Distinct individual buyers |
 | **Average Order Value (AOV)** | **R$ 159.33** | Mean gross revenue generated per order transaction |
 | **Average Item Price** | **R$ 120.65** | Mean catalog sales price across 112,650 sold items |
-| **Average Review Score** | **4.09 / 5.00** | Mean customer satisfaction rating across 99,224 reviews |
+| **Average Review Score** | **4.09 / 5.00** | Mean customer review rating across 99,224 reviews |
 | **Repeat Customer Rate** | **3.12%** | 2,997 customers with $\ge 2$ purchases |
 | **One-Time Customer Rate** | **96.88%** | 93,099 customers with exactly 1 purchase |
 | **Delivery Delay Rate** | **8.11%** | 7,827 orders delivered after carrier estimated date |
-| **Average Delivery Duration** | **12.09 Days** | Mean transit time from order purchase to customer delivery (Median: 9.80 days) |
-| **Top Revenue State** | **São Paulo (SP)** | **R$ 5,927,330** (37.41% of national revenue) |
+| **Average Delivery Duration** | **12.56 Days** | Mean transit time from purchase to customer delivery (Median: 10.22 days) |
+| **Top Revenue State** | **São Paulo (SP)** | **R$ 5,927,330** (37.41% of national gross revenue) |
 
 ---
 
-## 6. Tech Stack
+## 7. Tech Stack
 
 | Layer | Tools & Technologies |
 | :--- | :--- |
@@ -91,7 +102,7 @@ To build an end-to-end business intelligence pipeline that cleans raw relational
 
 ---
 
-## 7. End-to-End Pipeline Architecture
+## 8. End-to-End Architecture
 
 ```
 Raw CSV Datasets (data/raw/ - 9 Entities)
@@ -112,7 +123,7 @@ Feature Engineering & Dimensional Modeling (python/feature_engineering.py)
    │
    ▼
 Relational SQL Analytical Database (data/ecommerce.db & sql/)
-   ├── 5 Dimension Tables + 3 Fact Tables (3NF Schema with DDL constraints)
+   ├── 5 Dimension Tables + 4 Fact Tables (3NF Schema with DDL constraints)
    ├── 10 Automated data quality and relational integrity tests (100% PASS)
    └── 24 Core analytical queries + 5 Advanced Window Functions & CTEs
    │
@@ -130,7 +141,7 @@ Power BI Dimensional Modeling & DAX Layer (powerbi/)
 
 ---
 
-## 8. Power BI Executive Dashboard (5 Interactive Pages)
+## 9. Power BI Executive Dashboard (5 Interactive Pages)
 
 ### Page 1: Executive Overview
 *High-level performance monitoring displaying R$ 15.84M in Gross Revenue, 99.4K orders, monthly growth trajectory, order status breakdown, and top revenue categories.*
@@ -162,106 +173,110 @@ Power BI Dimensional Modeling & DAX Layer (powerbi/)
 
 ---
 
-## 9. Key Business Insights (Data-Backed)
+## 10. Key Business Insights (Data-Backed)
 
-1. **Revenue Growth & Seasonal Spikes:** Gross revenue expanded from R$ 49K in late 2016 to over R$ 1.1M monthly in 2017/2018, with a major revenue peak during November Black Friday (R$ 1.19M in Nov 2017).
+1. **Revenue Growth & Seasonality:** Gross revenue expanded from R$ 49K in late 2016 to over R$ 1.1M monthly in 2017/2018, with an all-time revenue peak during Black Friday in November 2017 (R$ 1.19M across 7,544 orders).
 2. **Customer Retention Deficit:** **96.88% of buyers (93,099 customers) made only a single purchase**, while repeat buyers (3.12%) generated R$ 565K. Increasing repeat purchase rate represents the largest commercial opportunity.
-3. **Delivery Lead-Time & Review Score Association:** A clear negative statistical correlation (**$r = -0.3338$**) exists between delivery duration and review ratings. Deliveries under 5 days average a **4.45 review score**, whereas deliveries exceeding 30 days plummet to **1.76**, with 1-star reviews surging to 68.8%.
-4. **Extreme Geographic Revenue Concentration:** The Southeast region (SP, RJ, MG, ES) accounts for **73.5% of total platform revenue**, with São Paulo alone representing **37.41% (R$ 5.93M)**.
-5. **Regional Logistics Disparity:** Delivery times vary significantly by region: São Paulo averages **8.3 days**, whereas Northern states face severe delays (Roraima averages **27.0 days**, Amapá **24.1 days**).
-6. **Catalog Revenue Pareto Principle:** The top 10 product categories (out of 71) account for **58.2% of total merchandise sales**, led by Health & Beauty (R$ 1.44M), Watches & Gifts (R$ 1.21M), and Bed, Bath & Table (R$ 1.04M).
-7. **Credit Financing Dominance:** Credit cards account for **75.4% of gross payment value** (R$ 12.5M) and 76.8% of transactions, with consumers heavily utilizing multi-month installment financing for orders over R$ 150.
+3. **Delivery Lead-Time & Review Score Association:** A moderate negative correlation (**$r = -0.3338$**) was observed between delivery duration and review ratings. Deliveries completed within 5 days averaged a **4.45 review score**, whereas deliveries exceeding 30 days averaged **1.76**, with 1-star reviews surging to 68.8%.
+4. **Geographic Revenue Concentration:** The Southeast region (SP, RJ, MG, ES) accounts for **73.5% of total platform revenue**, with São Paulo alone representing **37.41% (R$ 5.93M)**.
+5. **Regional Logistics Disparities:** Delivery duration varies significantly by geographic region: São Paulo averages **8.3 days**, whereas Northern states face extended transit (Roraima averages **27.0 days**, Amapá **24.1 days**).
+6. **Catalog Revenue Concentration:** The top 10 product categories (out of 71) account for **58.2% of total merchandise sales**, led by Health & Beauty (R$ 1.44M), Watches & Gifts (R$ 1.21M), and Bed, Bath & Table (R$ 1.04M).
+7. **Credit Financing Reliance:** Credit cards account for **75.4% of gross payment value** (R$ 12.5M) and 76.8% of transactions, with consumers heavily utilizing multi-month installment financing for orders over R$ 150.
 
 ---
 
-## 10. Strategic Business Recommendations
+## 11. Strategic Business Recommendations
 
-- **Automated Post-Purchase Retention Workflows:** Deploy automated email/WhatsApp replenishment sequences 30–45 days post-delivery targeting fast-moving consumable categories (Health & Beauty, Pet Shop, Perfumery) with personalized 10% discount codes to increase repeat rate from 3.12% to 6.0%.
-- **Regional 3PL Fulfillment Hubs:** Establish distributed fulfillment partnerships or micro-warehouses in Northeast (Bahia/Pernambuco) and North (Amazonas) to slash transit times from 24+ days down to <12 days, directly mitigating 1-star reviews.
-- **Proactive Delivery Delay Communication:** Implement automated SMS alerts when an order passes carrier estimated delivery date, accompanied by an apology store credit voucher (R$ 15), preventing dissatisfied customers from leaving 1-star reviews.
-- **Top Category Seller Incentives:** Prioritize seller acquisition and exclusive promotional placement for the top 5 high-margin categories (Health & Beauty, Watches, Bed & Bath, Sports Leisure, Computer Accessories) which drive 39.1% of platform GMV.
+- **Post-Purchase Retention Workflows:** Management could target an increase in repeat purchase rate from the observed **3.12% baseline toward 6.0%** by deploying automated email/WhatsApp replenishment triggers 30–45 days post-delivery for consumable categories (Health & Beauty, Perfumery, Pet Shop).
+- **Regional 3PL Fulfillment Partnerships:** Establishing distributed fulfillment micro-hubs in the Northeast (Bahia/Pernambuco) and North (Amazonas) could reduce shipping transit times from 24+ days down toward regional averages (<12 days), directly mitigating 1-star review volumes.
+- **Proactive Delivery Delay Communication:** Implementing automated SMS alerts when an order exceeds the carrier estimated delivery date, coupled with proactive customer support outreach, can help mitigate customer dissatisfaction before a negative review is submitted.
+- **Top Category Seller Support:** Focusing seller onboarding and promotional placement on the top 5 high-performing categories (Health & Beauty, Watches, Bed & Bath, Sports Leisure, Computer Accessories) can protect the core 39.1% of platform revenue.
 
 ---
 
-## 11. Technical Implementation
+## 12. Technical Implementation
 
 ### A. Python Data Engineering (`python/`)
-- **`data_cleaning.py`:** Handles datetime type casting, deduplicates geographic records, maps Portuguese category names to English, imputes missing dimensions with business defaults, and enforces referential integrity.
-- **`feature_engineering.py`:** Computes derived financial fields (`revenue = price + freight_value`), operational lead times, customer purchase frequency, value tier flags, and generates the continuous 1,096-day `dim_date.csv`.
+- **`data_cleaning.py`:** Standardizes ISO 8601 timestamps, deduplicates geographic records, maps Portuguese category names to English, imputes missing dimensions with business defaults, and enforces referential integrity.
+- **`feature_engineering.py`:** Calculates derived financial fields (`revenue = price + freight_value`), operational lead times, customer purchase frequency, value tier flags, and generates the continuous 1,096-day `dim_date.csv`.
 - **`eda.py`:** Generates descriptive statistics, distribution metrics, correlation matrices, and visual benchmark charts.
 - **`export_sqlite_db.py`:** Programmatically instantiates `ecommerce.db`, executes DDL schemas, loads clean CSVs, creates indexes, and runs 10 automated SQL quality audits.
 
 ### B. Relational SQL Database (`sql/`)
-- **`01_database_schema.sql`:** DDL definitions for 5 Dimension tables and 3 Fact tables with primary keys, foreign keys, and indexes.
+- **`01_database_schema.sql`:** DDL definitions for 5 Dimension tables and 4 Fact tables with primary keys, foreign keys, and indexes.
 - **`03_data_quality.sql`:** 10 Automated validation queries verifying 0 duplicate PKs, 0 orphan FKs, 0 invalid dates, and domain constraints.
 - **`04_business_analysis.sql`:** 24 Core analytical queries covering monthly sales velocity, category revenue rankings, customer retention rates, and payment distributions.
-- **`05_advanced_analysis.sql`:** Advanced analytical queries utilizing Common Table Expressions (CTEs), Window Functions (`ROW_NUMBER`, `DENSE_RANK`, `NTILE`), and RFM customer value deciles.
+- **`05_advanced_analysis.sql`:** 5 Advanced analytical queries utilizing Common Table Expressions (CTEs), Window Functions (`ROW_NUMBER`, `DENSE_RANK`, `NTILE`), and RFM customer value deciles.
 
 ### C. Power BI Star Schema & DAX (`powerbi/`)
-- **Star Schema Architecture:** 5 Dimension tables (`DimCustomer`, `DimProduct`, `DimSeller`, `DimDate`, `DimLocation`) connected to Fact tables (`FactSales`, `FactOrders`, `FactPayments`, `FactReviews`) with single-directional 1-to-many relationships.
+- **Star Schema Architecture:** 5 Dimension tables (`DimCustomer`, `DimProduct`, `DimSeller`, `DimDate`, `DimLocation`) connected to 4 Fact tables (`FactSales`, `FactOrders`, `FactPayments`, `FactReviews`) with single-directional 1-to-many relationships.
 - **31 DAX Measures:** Fully documented measure library covering sales velocity, fulfillment rates, customer retention percentages, review sentiment breakdown, and Year-over-Year (YoY) / Month-over-Month (MoM) time intelligence.
 
 ---
 
-## 12. Star Schema Data Model
+## 13. Star Schema Data Model
+
+The data model follows an analytical Star Schema with 5 Dimension tables and 4 Fact tables linked by 1-to-many relationships:
 
 ![Power BI Star Schema](screenshots/powerbi_data_model.png)
 
 ---
 
-## 13. Project Repository Structure
+## 14. Project Repository Structure
 
 ```
-D:\Ecomercee\
-├── data\
-│   ├── raw\                          # 9 Authentic Olist raw CSV datasets
-│   ├── processed\                    # 8 Cleaned CSVs + dim_date.csv + master orders
-│   └── ecommerce.db                  # Relational SQLite database instance
-├── notebooks\
+.
+├── data/
+│   ├── raw/                          # 9 Authentic Olist raw CSV datasets
+│   ├── processed/                    # 8 Cleaned CSVs + dim_date.csv + master orders
+│   └── ecommerce.db                  # Relational SQLite database instance (excluded from Git)
+├── notebooks/
 │   ├── 01_data_cleaning.ipynb        # Interactive data cleaning notebook
 │   └── 02_exploratory_data_analysis.ipynb # Interactive EDA & visualization notebook
-├── python\
+├── python/
 │   ├── data_cleaning.py              # Automated data cleaning pipeline
 │   ├── feature_engineering.py        # Feature engineering & date dimension
 │   ├── eda.py                        # Statistical EDA and visual charts
-│   └── export_sqlite_db.py           # SQLite database builder & test runner
-├── sql\
+│   ├── export_sqlite_db.py           # SQLite database builder & test runner
+│   └── validate_pbip_project.py      # Automated Power BI project validator
+├── sql/
 │   ├── 01_database_schema.sql        # DDL table creation and indexes
 │   ├── 02_data_loading.sql           # Data loading commands
 │   ├── 03_data_quality.sql           # 10 Data quality and integrity checks
 │   ├── 04_business_analysis.sql      # 24 Core business analytical queries
-│   └── 05_advanced_analysis.sql      # CTEs, Window functions & RFM segmentation
-├── powerbi\
-│   ├── Ecommerce_Customer_Sales_Intelligence.pbix # Master Power BI report
+│   └── 05_advanced_analysis.sql      # 5 CTEs, Window functions & RFM segmentation
+├── powerbi/
+│   ├── Ecommerce_Customer_Sales_Intelligence.pbix # Master Power BI report file
 │   ├── Ecommerce_Customer_Sales_Intelligence.pbip # Native Power BI Project
 │   ├── data_model.md                 # Star Schema relationship documentation
 │   ├── dax_measures.md               # Catalog of all 31 verified DAX measures
 │   ├── dashboard_specification.md    # Layout and visual configuration guide
 │   └── power_query_steps.md          # Power Query (M) transformation steps
-├── powerbi_dashboard_screenshots\
-│   ├── 01_executive_overview.png     # Executive Overview dashboard screenshot
-│   ├── 02_sales_product_analysis.png # Sales & Product Analysis dashboard screenshot
-│   ├── 03_customer_intelligence.png  # Customer Intelligence dashboard screenshot
-│   ├── 04_delivery_customer_experience.png # Delivery & CSAT dashboard screenshot
-│   └── 05_geographic_analysis.png    # Geographic Analysis dashboard screenshot
-├── screenshots\
+├── powerbi_dashboard_screenshots/    # Official 5 full Power BI dashboard screenshots
+│   ├── 01_executive_overview.png
+│   ├── 02_sales_product_analysis.png
+│   ├── 03_customer_intelligence.png
+│   ├── 04_delivery_customer_experience.png
+│   └── 05_geographic_analysis.png
+├── screenshots/
 │   └── powerbi_data_model.png        # Star Schema data model architecture diagram
-├── docs\
+├── docs/
 │   ├── DATA_DICTIONARY.md            # Detailed schema data dictionary
 │   ├── BUSINESS_INSIGHTS.md          # 10 In-depth business analytical findings
 │   ├── BUSINESS_RECOMMENDATIONS.md   # Actionable commercial and logistics strategies
 │   ├── INTERVIEW_PREPARATION.md      # Comprehensive interview Q&A guide
 │   ├── PORTFOLIO_READINESS.md        # Final portfolio readiness audit
 │   ├── VALIDATION_REPORT.md          # Cross-platform KPI reconciliation matrix
-│   └── FINAL_AUDIT.md                # 11-Pillar production audit report
+│   └── FINAL_AUDIT.md                # Multi-pillar production audit report
 ├── requirements.txt                  # Python dependencies
 ├── .gitignore                        # Git exclusions (cache, secrets, >100MB files)
+├── .env.example                      # Example environment variables template
 └── README.md                         # Portfolio project showcase
 ```
 
 ---
 
-## 14. Pipeline Validation & Cross-Reconciliation
+## 15. Data Quality & Pipeline Validation
 
 All key metrics were cross-validated across the **Python Data Pipeline**, the **Relational SQL Database (`ecommerce.db`)**, and the **Power BI DAX Measure Layer** with **100% exact parity (0.00% discrepancy)**:
 
@@ -272,25 +287,28 @@ All key metrics were cross-validated across the **Python Data Pipeline**, the **
 | **Feature Engineering** | Operational & Financial Metrics | 1,096 Date Rows, 15+ Features | **PASS** |
 | **SQL Data Quality** | 10 Automated Integrity Checks | 10/10 Tests Passed (0 Defects) | **PASS** |
 | **SQL Analytical Queries**| 24 Core + 5 Advanced Queries | 29/29 Executed Cleanly | **PASS** |
-| **Power BI Star Schema** | 5 Dimensions, 3 Facts | 1-to-Many Filter Propagation | **PASS** |
+| **Power BI Star Schema** | 5 Dimensions, 4 Facts | 1-to-Many Filter Propagation | **PASS** |
 | **DAX Measures** | 31 Business Calculations | 0 Syntax / Context Errors | **PASS** |
 | **Dashboard Pages** | 5 Interactive Pages | 100% Exact Matching KPIs | **PASS** |
 | **Security & Git Audit** | No Secrets, No Large Binaries | Clean Working Tree | **PASS** |
 
 ---
 
-## 15. How to Reproduce Locally
+## 16. How to Run Locally
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/ecommerce-customer-sales-bi-analytics.git
+   git clone https://github.com/AyushGupta205/ecommerce-customer-sales-bi-analytics.git
    cd ecommerce-customer-sales-bi-analytics
    ```
 
 2. **Set Up Python Virtual Environment & Install Dependencies:**
    ```bash
    python -m venv venv
+   # On Windows:
    .\venv\Scripts\activate
+   # On macOS/Linux:
+   source venv/bin/activate
    pip install -r requirements.txt
    ```
 
@@ -303,13 +321,19 @@ All key metrics were cross-validated across the **Python Data Pipeline**, the **
    ```
 
 4. **Open the Power BI Dashboard:**
-   - Double-click `powerbi/Ecommerce_Customer_Sales_Intelligence.pbix` (or `.pbip`) in Microsoft Power BI Desktop.
+   - Double-click `powerbi/Ecommerce_Customer_Sales_Intelligence.pbix` (or `Ecommerce_Customer_Sales_Intelligence.pbip`) in Microsoft Power BI Desktop.
    - Click **Refresh** to reload the clean data from `data/processed/`.
 
 ---
 
-## 16. Author & Contact
+## 17. Project Limitations
 
-- **Author:** Data Analyst & Business Intelligence Developer
-- **Portfolio Project:** E-Commerce Customer, Sales & Business Intelligence Analytics
-- **Technologies:** Python | SQL | Power BI | DAX | Star Schema Dimensional Modeling
+- **Manufacturing & Wholesale Costs:** The authentic Olist dataset does not contain supplier acquisition or manufacturing cost data; therefore, analysis is strictly scoped to Gross Revenue, Product Sales, Freight, and AOV without fabricating profit margins.
+- **Correlation vs. Causation:** The negative correlation ($r = -0.3338$) between delivery duration and review ratings represents an observed empirical association and does not imply that shipping delay was the sole causal factor behind every negative review.
+
+---
+
+## 18. Author
+
+- **Ayush Gupta**
+- **Repository:** [https://github.com/AyushGupta205/ecommerce-customer-sales-bi-analytics](https://github.com/AyushGupta205/ecommerce-customer-sales-bi-analytics)
