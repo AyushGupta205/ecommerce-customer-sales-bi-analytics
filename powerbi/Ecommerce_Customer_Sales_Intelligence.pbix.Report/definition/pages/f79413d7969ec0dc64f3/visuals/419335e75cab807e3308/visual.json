@@ -3,10 +3,10 @@
   "name": "419335e75cab807e3308",
   "position": {
     "x": 0,
-    "y": 348.26818366517676,
+    "y": 348,
     "z": 1,
-    "height": 730.23973994311257,
-    "width": 739.60178789110114,
+    "height": 730,
+    "width": 660,
     "tabOrder": 1
   },
   "visual": {
@@ -69,5 +69,107 @@
         ]
       }
     }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "caf67e9d2c4e02deecb6",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimDate"
+              }
+            },
+            "Property": "year_month"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "DimDate",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "year_month"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'2018-09'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'2018-10'"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "7af7cf860465f627e46d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "FactSales"
+              }
+            },
+            "Property": "Total Revenue"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f409c41622ee6f6693df",
+        "type": "VisualTopN",
+        "howCreated": "User"
+      }
+    ]
   }
 }
